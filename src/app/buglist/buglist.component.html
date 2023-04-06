@@ -1,0 +1,29 @@
+<div class="container">
+  <div *ngIf="errorMessage" class="text-bg-danger">{{errorMessage}}</div>
+  <div class="card" *ngIf="bugs">
+    <div class="card-header">Bugs List</div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th> <th>Status</th> <th>Difficulty</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let b of bugs">
+          <td>{{b.id}}</td>
+          <td>{{b.status}}</td>
+          <td>{{b.difficulty}}</td>
+          <td>
+            <button class="btn btn-danger" (click)="removeBug(b)">
+              <i class="bi bi-trash"></i>
+           </button>
+          </td>
+
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
