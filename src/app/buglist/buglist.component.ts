@@ -23,13 +23,9 @@ export class BuglistComponent implements OnInit{
 
   retrieveBugs(): void {
     this.bugService.getAllBugs()
-    .subscribe(
-      (data:any) => {
-        this.bugs= data;
-        
-      },
-      error => {
-        console.log(error);
+      .subscribe({
+        next:(data:any)=>{this.bugs=data},
+      error:(err:any)=>{this.errorMessage=err}
       });
   }
 
