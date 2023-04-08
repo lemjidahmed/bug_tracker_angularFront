@@ -1,6 +1,8 @@
 export class Bug {
-    id!: number;
-    status!: string;
-    difficulty!:string;
-   
-  }
+    id!:any;
+    title!:string;
+    status!:string;
+    description!:string;
+    projectname!:string;
+}
+    

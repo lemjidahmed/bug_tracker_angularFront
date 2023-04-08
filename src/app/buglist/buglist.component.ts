@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { BugService } from '../services/bug.service';
+import { Bug } from '../model/bug.model';
 
 @Component({
   selector: 'app-buglist',
@@ -7,7 +8,7 @@ import { BugService } from '../services/bug.service';
   styleUrls: ['./buglist.component.css']
 })
 export class BuglistComponent implements OnInit{
-  bugs! :Array<any>;
+  bugs! :Array<Bug>;
   errorMessage!:string;
   currentBug!: Bug;
   currentIndex = -1;
@@ -22,15 +23,19 @@ export class BuglistComponent implements OnInit{
 
   retrieveBugs(): void {
     this.bugService.getAllBugs()
-      .subscribe({
-        next:(data:any)=>{this.bugs=data},
-      error:(err:any)=>{this.errorMessage=err}
+    .subscribe(
+      (data:any) => {
+        this.bugs= data;
+        
+      },
+      error => {
+        console.log(error);
       });
   }
 
   refreshList(): void {
     this.retrieveBugs();
-    this.currentBug = undefined;
+  
     this.currentIndex = -1;
   }
 

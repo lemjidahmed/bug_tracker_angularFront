@@ -6,14 +6,16 @@
       <table class="table">
         <thead>
         <tr>
-          <th>ID</th> <th>Status</th> <th>Difficulty</th>
+          <th>ID</th> <th>Title</th> <th>Status</th> <th>Description</th><th>Project Name</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let b of bugs">
-          <td>{{b.id}}</td>
-          <td>{{b.status}}</td>
-          <td>{{b.difficulty}}</td>
+          <td>{{b.id | json }}</td>
+          <td>{{b.title | json}}</td>
+          <td>{{b.status | json}}</td>
+          <td>{{b.description | json}}</td>
+          <td>{{b.projectname | json}}</td>
           <td>
             <button class="btn btn-danger" (click)="removeBug(b)">
               <i class="bi bi-trash"></i>
